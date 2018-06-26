@@ -1,0 +1,77 @@
+4...........................
+Declare 
+e emp.empno%type;
+s emp.sal%type;
+c emp.comm%type;
+ 
+
+Begin
+select empno,sal into e,s from emp where sal in (select min(sal) from emp where job = 'MANAGER') ;
+
+dbms_output.put_line('The EMPNO:   ' || e );
+dbms_output.put_line ('The Sal:   ' || s);
+update emp set comm=comm+1200 where empno = e; 
+End;
+
+
+Declare 
+e emp.empno%type:= :ENPNO;
+en emp.ename%type;
+d emp.hiredate%type;
+j emp.job%type;
+ 
+
+Begin
+select ename,hiredate,job into en,d,j from emp where empno = e ;
+
+dbms_output.put_line('The ENAME:   ' || en );
+dbms_output.put_line ('The hiredate:   ' || d);
+
+dbms_output.put_line ('The job:   ' || j);
+End;
+
+
+
+2.......................................................
+Declare 
+d emp.deptno%type:= :DEPTNO;
+ten emp.empno%type;
+ss emp.sal%type;
+
+ 
+
+Begin
+select  count(empno) into ten from emp where deptno = d ;
+select  sum(sal) into ss from emp where deptno = d ;
+
+dbms_output.put_line('The Total Emp Num:   ' || ten );
+dbms_output.put_line ('The Sal:   ' || ss);
+
+End;
+
+3.................................
+
+
+Declare 
+a number(5);
+r number(5):= 8;
+pi number(5):= 3.14159;
+
+
+ 
+
+Begin
+a:= pi*r*r;
+
+dbms_output.put_line('The Area:   ' || A);
+
+End;
+
+
+
+
+
+
+
+
+
